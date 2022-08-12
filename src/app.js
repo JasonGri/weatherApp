@@ -24,5 +24,13 @@ module.exports = () => {
     res.render("pages/index");
   });
 
+  app.get("/news", (req, res) => {
+    res.render("pages/news");
+  });
+
+  app.get("/about", (req, res) => {
+    res.render("pages/about");
+  });
+
   return app;
 };

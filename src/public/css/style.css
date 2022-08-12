@@ -1,3 +1,29 @@
 body {
-  color: red;
+  background-color: #dddfd4;
+}
+
+.svg {
+  width: 30px;
+  height: 24px;
+}
+
+nav {
+  background-color: #173e43;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+footer {
+  color: #173e43;
+}
+
+footer ul {
+  list-style: none;
+}
+
+.logo-footer {
+  width: 60px;
+  height: 48px;
 }
