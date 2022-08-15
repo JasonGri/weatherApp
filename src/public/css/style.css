@@ -31,7 +31,22 @@ footer ul {
 }
 
 /* Local weather display */
-#local-weather {
-  border: solid #000000;
+/* #3fb0ac */
+/* #fae596 */
+.weather-display {
+  border: solid #173e43;
+  background-color: #3fb0ac;
+  color: #173e43;
   border-radius: 5px;
+}
+
+.weather-display ul {
+  list-style: none;
+}
+.weather-display ul li {
+  padding: 5px;
+}
+
+#temp {
+  font-size: xx-large;
 }

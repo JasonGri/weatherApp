@@ -4,16 +4,64 @@
   <body>
     <%- include('../partials/header') %>
     <h1>Weather App</h1>
-
-    <div class="container" id="local-weather">
-      <div class="row">
-        <div class="col-3"><%= weather.type %></div>
-        <div class="col-3"><%= weather.description %></div>
-        <div class="col-3"><%= weather.temp %></div>
-        <div class="col-3"><%= weather.pressure %></div>
+    <div class="container weather-display">
+      <h3>The current weather at <%= location %> is: </h3>
+      <div class="row align-items-start p-2">
+        <div class="col-4 p-2 fs-4"
+          ><img src="<%= localWeather.icon %> " /> <%= localWeather.temp %> °C<br /></p
+          ><p><%= localWeather.description %> </p></div
+        >
+        <div class="col-4 p-2"
+          ><h5>Temperature Details</h5
+          ><ul class="fs-5">
+            <li>Feels like: <%= localWeather.feels_like %>°C</li>
+            <li><img src="/svgIcons/thermometer-high.svg" class="svg"> <%= localWeather.temp_max %>°C</li>
+            <li><img src="/svgIcons/thermometer-low.svg" class="svg"> <%= localWeather.temp_min %>°C</li>
+          </ul></div
+        >
+        <div class="col-4 p-2 " 
+          ><h5>Further Information: </h5
+          ><ul class="fs-5">
+            <li><img src="/svgIcons/moisture.svg" class="svg"> <%= localWeather.humidity %>%</li>
+            <li><img src="/svgIcons/pressure-gauge-meter.svg" class="svg"> <%= localWeather.pressure %></li>
+            <li><img src="/svgIcons/wind.svg" class="svg"> <%= localWeather.wind_speed %> Km/h</li>
+          </ul></div
+        >
       </div>
     </div>
-    <img src="<%= weather.icon %> " />
+    <hr>
+    <div class="container">
+      <h2>Enter a location's name to know the weather of:</h2>
+      <form class="search" action="/" method="POST">
+        <label class="form-label">Location</label>
+        <input name="city" type="text" class="form-control" placeholder="E.g. London"></input>
+      </form>
+      <div class="container weather-display mt-4">
+        <h3>The current weather at <%= city %> is: </h3>
+        <div class="row align-items-start p-2">
+          <div class="col-4 p-2 fs-4"
+            ><img src="<%= weather.icon %> " /> <%= weather.temp %> °C<br /></p
+            ><p><%= weather.description %> </p></div
+          >
+          <div class="col-4 p-2"
+            ><h5>Temperature Details</h5
+            ><ul class="fs-5">
+              <li>Feels like: <%= weather.feels_like %>°C</li>
+              <li><img src="/svgIcons/thermometer-high.svg" class="svg"> <%= weather.temp_max %>°C</li>
+              <li><img src="/svgIcons/thermometer-low.svg" class="svg"> <%= weather.temp_min %>°C</li>
+            </ul></div
+          >
+          <div class="col-4 p-2 " 
+            ><h5>Further Information: </h5
+            ><ul class="fs-5">
+              <li><img src="/svgIcons/moisture.svg" class="svg"> <%= weather.humidity %>%</li>
+              <li><img src="/svgIcons/pressure-gauge-meter.svg" class="svg"> <%= weather.pressure %></li>
+              <li><img src="/svgIcons/wind.svg" class="svg"> <%= weather.wind_speed %> Km/h</li>
+            </ul></div
+          >
+        </div>
+      </div>
+    </div>
     <%- include('../partials/scripts') %>
   </body>
   <%- include('../partials/footer') %>
