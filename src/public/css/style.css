@@ -7,6 +7,10 @@ body {
   height: 24px;
 }
 
+.hide {
+  display: none;
+}
+
 /* Header */
 nav {
   background-color: #173e43;
@@ -17,8 +21,10 @@ nav {
 }
 
 /* Footer */
-footer {
+.footer {
   color: #173e43;
+  position: fixed;
+  bottom: 0;
 }
 
 footer ul {
@@ -49,4 +55,9 @@ footer ul {
 
 #temp {
   font-size: xx-large;
+}
+
+.form-btn {
+  background-color: #173e43;
+  color: #3fb0ac;
 }

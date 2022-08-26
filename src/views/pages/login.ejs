@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="container">
+      <h2>Sign In</h2>
+      <% if (flashMessages.success.length>0) { %> <%=flashMessages.success %> <%
+      } %> <% if (messages.error) { %> <%= messages.error %> <% } %>
+      <form action="login" method="post">
+        <section>
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-control"
+            id="email"
+            name="email"
+            type="text"
+            autocomplete="email"
+            required
+          />
+        </section>
+        <section>
+          <label class="form-label" for="new-password">Password</label>
+          <input
+            class="form-control"
+            id="current-password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+        </section>
+        <button type="submit" class="btn mt-3 form-btn">Sign in</button>
+      </form>
+    </div>
+    <%- include('../partials/scripts') %>
+  </body>
+  <%- include('../partials/footer') %>
+</html>

@@ -2,10 +2,15 @@
 
 const express = require("express");
 const path = require("path");
+require("dotenv").config();
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const bodyParser = require("body-parser");
 const getWeather = require("./utils/weatherAPI");
+const usersRouter = require("./routes/users");
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
 
 const app = express();
 
@@ -24,11 +29,25 @@ module.exports = () => {
     express.static(path.join(__dirname, "../node_modules/bootstrap/dist/js"))
   );
 
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.urlencoded({ extended: false }));
 
+  // Authentication with passport js
+  app.use(flash());
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Routes
   const requestIp = require("request-ip");
   app.all("/", async (req, res) => {
     const context = {};
+    // const context = { currentUser: req.user.name };
 
     // Get client IP address
     const clientIp = requestIp.getClientIp(req);
@@ -62,14 +81,17 @@ module.exports = () => {
     context["localWeather"] = localWeather;
     context["location"] = testLocation;
 
+    let weather = {};
+    let city = "";
+
     if (req.method === "POST") {
-      const city = req.body.city;
-      const weather = await getWeather(testUnit, undefined, undefined, city);
-
-      context["weather"] = weather;
-      context["city"] = city;
+      city = req.body.city;
+      weather = await getWeather(testUnit, undefined, undefined, city);
     }
+    context["weather"] = weather;
+    context["city"] = city;
 
+    console.log(context);
     res.render("pages/index", context);
   });
 
@@ -80,6 +102,8 @@ module.exports = () => {
   app.get("/about", (req, res) => {
     res.render("pages/about");
   });
+
+  app.use("/users", usersRouter);
 
   return app;
 };

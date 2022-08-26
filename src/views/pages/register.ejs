@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <h1>Registration Page</h1>
+
+    <div class="container">
+      <h2>Register</h2>
+      <% if (flashMessages.error.length>0) { %> <%= flashMessages.error %> <% }
+      %>
+      <form action="register" method="post">
+        <section>
+          <label class="form-label" for="username">Username</label>
+          <input
+            class="form-control"
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            required
+          />
+        </section>
+        <section>
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-control"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+        </section>
+        <section>
+          <label class="form-label" for="new-password">Password</label>
+          <input
+            class="form-control"
+            id="new-password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+        </section>
+        <section>
+          <label class="form-label" for="new-password2"
+            >Password Confirmation</label
+          >
+          <input
+            class="form-control"
+            id="new-password2"
+            name="password2"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+        </section>
+        <button type="submit" class="btn mt-3 form-btn">Sign up</button>
+      </form>
+    </div>
+    <%- include('../partials/scripts') %>
+  </body>
+  <%- include('../partials/footer') %>
+</html>

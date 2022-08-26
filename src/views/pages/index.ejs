@@ -34,9 +34,9 @@
       <h2>Enter a location's name to know the weather of:</h2>
       <form class="search" action="/" method="POST">
         <label class="form-label">Location</label>
-        <input name="city" type="text" class="form-control" placeholder="E.g. London"></input>
+        <input id="submit-btn" name="city" type="text" class="form-control" placeholder="E.g. London"></input>
       </form>
-      <div class="container weather-display mt-4">
+      <div class="container weather-display searched mt-4">
         <h3>The current weather at <%= city %> is: </h3>
         <div class="row align-items-start p-2">
           <div class="col-4 p-2 fs-4"

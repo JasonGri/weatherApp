@@ -11,7 +11,7 @@ exports.up = (pgm) => {
         username VARCHAR(30) NOT NULL,
         password VARCHAR(100) NOT NULL,
         email VARCHAR(150) NOT NULL,
-        def_location VARCHAR(100) NOT NULL,
+        def_location VARCHAR(100),
         is_verified BOOLEAN DEFAULT FALSE);
     `);
 };
