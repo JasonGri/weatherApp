@@ -11,6 +11,7 @@ const usersRouter = require("./routes/users");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
+const auth = require("./middlewares/auth");
 
 const app = express();
 
@@ -42,6 +43,8 @@ module.exports = () => {
   );
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(auth.isLoggedIn);
 
   // Routes
   const requestIp = require("request-ip");
@@ -91,7 +94,9 @@ module.exports = () => {
     context["weather"] = weather;
     context["city"] = city;
 
-    console.log(context);
+    // console.log(req.session);
+    // console.log(res.locals.login);
+    // console.log(context);
     res.render("pages/index", context);
   });
 

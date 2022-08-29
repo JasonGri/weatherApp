@@ -20,12 +20,36 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <% if (login) {%>
+        <li class="nav-item"
+          ><a class="nav-link" href="/users/profile">Profile</a></li
+        >
+        <% }%>
+      </ul>
+      <ul class="navbar-nav">
+        <% if (login) {%>
+        <li class="nav-item"
+          ><form action="/users/logout" method="post"
+            ><input class="btn" type="submit" value="Logout" /></form
+        ></li>
+        <% } else { %>
+        <li class="nav-item"
+          ><a class="nav-link" href="/users/login"
+            ><button class="btn">Login</button></a
+          ></li
+        >
+        <li class="nav-item"
+          ><a class="nav-link" href="/users/register"
+            ><button class="btn">Register</button></a
+          ></li
+        >
+        <% } %>
       </ul>
     </div>
   </div>

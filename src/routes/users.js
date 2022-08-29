@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const UserRepo = require("../repositories/users");
+const auth = require("../middlewares/auth");
 
 const initializePassport = require("../configs/passport");
 initializePassport(
@@ -54,6 +55,15 @@ router.post(
   })
 );
 
+router.post("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 router.get("/register", (req, res) => {
   const context = {
     flashMessages: {
@@ -72,6 +82,10 @@ router.get("/login", (req, res) => {
     },
   };
   res.render("pages/login", context);
+});
+
+router.get("/profile", auth.checkAuth, (req, res, next) => {
+  res.render("pages/profile");
 });
 
 module.exports = router;

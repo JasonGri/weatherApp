@@ -61,3 +61,20 @@ footer ul {
   background-color: #173e43;
   color: #3fb0ac;
 }
+
+/* navbar btns */
+.navbar-nav button {
+  color: #ffffff;
+  background-color: #3fb0ac;
+}
+
+.navbar-nav input {
+  color: #ffffff;
+  background-color: #3fb0ac;
+}
+
+.navbar-nav input:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  opacity: 85%;
+}
