@@ -36,7 +36,7 @@
         <label class="form-label">Location</label>
         <input id="submit-btn" name="city" type="text" class="form-control" placeholder="E.g. London"></input>
       </form>
-      <div class="container weather-display searched mt-4">
+      <div class="<% if (!city) { %> <%="hide"%> <% }%> container weather-display searched mt-4">
         <h3>The current weather at <%= city %> is: </h3>
         <div class="row align-items-start p-2">
           <div class="col-4 p-2 fs-4"

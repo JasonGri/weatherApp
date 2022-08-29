@@ -49,7 +49,12 @@ module.exports = () => {
   // Routes
   const requestIp = require("request-ip");
   app.all("/", async (req, res) => {
-    const context = {};
+    const context = {
+      flashMessages: {
+        error: req.flash("failure"),
+        success: req.flash("success"),
+      },
+    };
     // const context = { currentUser: req.user.name };
 
     // Get client IP address
@@ -60,14 +65,6 @@ module.exports = () => {
     const testIp = "46.103.243.18";
     const ipUrl = `http://api.ipstack.com/${testIp}?access_key=${process.env.IPSTACK_KEY}`;
 
-    const fetchData = async (url) => {
-      try {
-        let res = await fetch(url);
-        return res.json();
-      } catch (err) {
-        console.error(err);
-      }
-    };
     // console.log(await getCoords(ipUrl));
     // const ipData = await fetchData(ipUrl); // This is an object NOT a promise
     // const lon = ipData["longitude"];
@@ -96,7 +93,7 @@ module.exports = () => {
 
     // console.log(req.session);
     // console.log(res.locals.login);
-    // console.log(context);
+    console.log(context);
     res.render("pages/index", context);
   });
 
