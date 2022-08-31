@@ -1,8 +1,11 @@
 module.exports = {
   // Check if user is logged in
   checkAuth: (req, res, next) => {
-    if (req.isAuthenticated()) next();
-    res.redirect("login");
+    if (!req.isAuthenticated()) {
+      res.redirect("login");
+    } else {
+      next();
+    }
   },
 
   // creates a local login variable with a boolean value (for template use)

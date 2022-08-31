@@ -90,6 +90,7 @@ module.exports = () => {
     }
     context["weather"] = weather;
     context["city"] = city;
+    context["ip"] = req.socket.remoteAddress;
 
     // console.log(req.session);
     // console.log(res.locals.login);

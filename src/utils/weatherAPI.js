@@ -44,6 +44,11 @@ const getWeather = async (units, lat, lon, city = "") => {
 
   const weatherData = await fetchData(weatherUrl);
 
+  if (weatherData.cod !== 200) {
+    const weather = weatherData;
+    return weather;
+  }
+
   const code = weatherData.weather[0].id;
   const today = new Date();
   const time = today.toUTCString().slice(17, 25);
